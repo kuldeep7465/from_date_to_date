@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Range Printing</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<h2>Date Range Printing</h2>
+
+<label for="fromDate">From:</label>
+<input type="date" id="fromDate">
+
+<label for="toDate">To:</label>
+<input type="date" id="toDate">
+
+<button id="printDates">Print Dates</button>
+
+<ul id="dateList">
+</ul>
+
+<script>
+$(document).ready(function(){
+    $("#printDates").click(function(){
+        var fromDate = new Date($("#fromDate").val());
+        var toDate = new Date($("#toDate").val());
+        var currentDate = new Date(fromDate);
+
+        $("#dateList").empty();
+
+        while (currentDate <= toDate) {
+            $("#dateList").append("<li>" + currentDate.toDateString() + "</li>");
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    });
+});
+</script>
+
+</body>
+</html>
